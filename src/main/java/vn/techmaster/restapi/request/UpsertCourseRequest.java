@@ -5,6 +5,7 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 @Data
@@ -21,6 +22,7 @@ public class UpsertCourseRequest {
     private String description;
     @NotNull(message = "type is required")
     @NotEmpty(message = "type is required")
+    @Pattern(regexp = "online|onlab")
     private String type;
     private List<String> topics;
     private String thumbnail;
