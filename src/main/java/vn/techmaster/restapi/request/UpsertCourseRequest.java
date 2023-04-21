@@ -1,5 +1,6 @@
 package vn.techmaster.restapi.request;
 
+
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +25,5 @@ public class UpsertCourseRequest {
     private List<String> topics;
     private String thumbnail;
     @NotNull(message = "userId is required")
-    @NotEmpty(message = "userId is required")
     private Integer userId;
 }

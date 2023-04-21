@@ -26,6 +26,7 @@ public class AdminController {
 
     @PostMapping("/admin/courses")
     public ResponseEntity<?> createCourse(@Valid @RequestBody UpsertCourseRequest upsertCourseRequest) {
+        System.out.println(upsertCourseRequest.getUserId());
         Course result = courseService.createCourse(upsertCourseRequest);
         return ResponseEntity.ok(result);
     }
