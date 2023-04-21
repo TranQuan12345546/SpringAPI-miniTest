@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vn.techmaster.restapi.entity.Course;
 import vn.techmaster.restapi.service.CourseService;
-import vn.techmaster.restapi.service.CourseServiceImp;
 
 import java.util.List;
 

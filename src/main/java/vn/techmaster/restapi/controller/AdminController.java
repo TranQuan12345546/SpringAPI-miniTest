@@ -9,7 +9,6 @@ import vn.techmaster.restapi.entity.CourseAdmin;
 import vn.techmaster.restapi.request.UpsertCourseRequest;
 import vn.techmaster.restapi.service.CourseService;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -20,7 +19,8 @@ public class AdminController {
     @GetMapping("/admin/courses")
     public ResponseEntity<?> getListCourseAdmin(@RequestParam(required=false, defaultValue = "1") int page,
                                            @RequestParam(required=false, defaultValue = "10") int pageSize) {
-        List<CourseAdmin> result = courseService.getListCourseAdmin();
+        CourseAdmin result = courseService.getListCourseAdmin(page, pageSize);
+
         return ResponseEntity.ok(result);
     }
 

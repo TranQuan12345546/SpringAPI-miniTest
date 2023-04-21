@@ -13,7 +13,6 @@ import java.util.List;
 @Component
 public class CourseServiceImp implements CourseService{
     private static ArrayList<Course> courses = new ArrayList<>();
-    private static List<CourseAdmin> courseAdmins = new ArrayList<>();
     static {
         List<String> topic = new ArrayList<>();
 
@@ -25,26 +24,28 @@ public class CourseServiceImp implements CourseService{
         courses.add(new Course(1, "Khóa học 1", "Mô tả", "online", topic, "", 1 , user1));
         courses.add(new Course(2, "Khóa học 2", "Mô tả", "offline", topic, "", 2 , user2));
         courses.add(new Course(3, "Khóa học 3", "Mô tả", "online", topic, "", 3, user3));
-        courseAdmins.add(new CourseAdmin(1, 10, 2, 19, courses));
+        for (int i = 0; i < 20; i++) {
+            courses.add(new Course());
+        }
     }
 
 
     @Override
     public List<Course> getListCourse(String type, String name, List<String> topic) {
         List<Course> courses1 = new ArrayList<>();
-        if (!type.isEmpty()) {
+        if (!(type == null)) {
             for (Course course : courses) {
                 if (type.equals(course.getType())) {
                     courses1.add(course);
                 }
             }
-        } else if (!name.isEmpty()) {
+        } else if (!(name == null)) {
             for (Course course : courses) {
                 if (name.contains(course.getName())) {
                     courses1.add(course);
                 }
             }
-        } else if (!topic.isEmpty()) {
+        } else if (!(topic == null)) {
             for (Course course : courses) {
                 if (topic.contains(course.getTopics())) {
                     courses1.add(course);
@@ -58,7 +59,13 @@ public class CourseServiceImp implements CourseService{
     }
 
     @Override
-    public List<CourseAdmin> getListCourseAdmin() {
+    public CourseAdmin getListCourseAdmin(int page, int pageSize) {
+        CourseAdmin courseAdmins = new CourseAdmin();
+        courseAdmins.setCurrentPage(page);
+        courseAdmins.setPageSize(pageSize);
+        courseAdmins.setTotalItems(courses.size());
+        courseAdmins.setTotalPages(courseAdmins.getTotalItems()/courseAdmins.getPageSize() + 1);
+        courseAdmins.setData(courses);
         return courseAdmins;
     }
 

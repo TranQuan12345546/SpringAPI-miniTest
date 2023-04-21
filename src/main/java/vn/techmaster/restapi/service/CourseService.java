@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public interface CourseService {
     List<Course> getListCourse(String type, String name, List<String> topic);
-    List<CourseAdmin> getListCourseAdmin();
+    CourseAdmin getListCourseAdmin(int page, int pageSize);
     Course getCourseInfo(Integer id);
 
     Course createCourse(UpsertCourseRequest upsertCourseRequest);
